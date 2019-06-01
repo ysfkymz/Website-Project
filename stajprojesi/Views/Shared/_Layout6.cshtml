@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+
+
+
+
+
+
+
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />﻿
+    <link href="~/contents/Site.css" rel="stylesheet" />
+    <link rel="icon" href="~/contents/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#asdf').dataTable();
+        })
+    </script>
+    <!-- Place favicon.ico in the root directory -->
+    <!-- all css here -->
+    <!-- bootstrap.min.css -->
+    <link rel="stylesheet" href="~/contents/css/bootstrap.min.css">
+    <!-- font-awesome.min.css -->
+    <link rel="stylesheet" href="~/contents/css/font-awesome.min.css">
+    <!-- owl.carousel.min.css -->
+    <link rel="stylesheet" href="~/contents/css/owl.carousel.css">
+    <!-- animate.css -->
+    <link rel="stylesheet" href="~/contents/css/animate.css">
+    <!-- meanmenu.min.css -->
+    <link rel="stylesheet" href="~/contents/css/meanmenu.min.css">
+    <!-- shortcodes.css -->
+    <link rel="stylesheet" href="~/contents/css/shortcode/shortcodes.css">
+    <!-- style.css -->
+
+    <link href="~/contents/style.css" rel="stylesheet" />
+    <!-- responsive.css -->
+    <link rel="stylesheet" href="~/contents/css/responsive.css">
+    <!-- modernizr-js -->
+    <script src="~/contents/js/vendor/modernizr-2.8.3.min.js"></script>
+  
+</head>
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <!-- header-start -->
+    <div id="preloader"></div>
+    <header>
+        <div class="header-area white-bg" id="main_h">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-8">
+                        <div class="logo">
+                            <a href="index.html"><img src="~/contents/img/logo.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 hidden-sm hidden-xs col-md-7">
+                        <div class="mainmenu">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("Index","Anasayfa")">ANASAYFA</a>
+
+                                    </li>
+                                    <li><a href="@Url.Action("Index","Komisyon")">KOMİSYON</a></li>
+                                    <li><a href="@Url.Action("Index","Konu")">KONU</a></li>
+                                    <li><a href="@Url.Action("Index","Mulakat")">MÜLAKAT</a></li>
+                                    <li><a href="@Url.Action("Index","Ogrenci")">ÖĞRENCİ</a></li>
+
+                                    <li class="active"><a href="@Url.Action("Index","Staj")">STAJ</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- mobile-menu-area-start -->
+            <div class="mobile-menu-area visible-xs visible-sm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mobile-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("Index","Anasayfa")">ANASAYFA</a>
+
+                                        </li>
+                                        <li><a href="@Url.Action("Index","Komisyon")">KOMİSYON</a></li>
+                                        <li><a href="@Url.Action("Index","Konu")">KONU</a></li>
+                                        <li><a href="@Url.Action("Index","Mulakat")">MÜLAKAT</a></li>
+                                        <li><a href="@Url.Action("Index","Ogrenci")">ÖĞRENCİ</a></li>
+
+                                        <li class="active"><a href="@Url.Action("Index","Staj")">STAJ</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile-menu-area-end -->
+        </div>
+    </header>
+    <!-- header-end -->
+    <!-- page-header-area-start -->
+    <!-- page-header-area-end -->
+    <!-- post-content-area-start -->
+    <div class="post-content-area ptb-80">
+        @RenderBody()
+
+    </div>
+
+    <div class="copyright-area ptb-30 black-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                    <div class="copyright-left">
+                        <p>� Copyright 2018 - Karadeniz Teknik Üniversitesi. All Rights Reserved.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+                    <div class="copyright-right">
+                        <p>Designed & Developed by : <a href="#">Yusuf Kaymaz-Cevat Sarıkaya</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap4.js"></script>
+
+    <script src="~/contents/js/vendor/jquery-1.12.0.min.js"></script>
+    <!-- bootstrap.min.js -->
+    <script src="~/contents/js/bootstrap.min.js"></script>
+    <!-- owl.carousel.min.js -->
+    <script src="~/contents/js/owl.carousel.min.js"></script>
+    <!-- jquery.scrollUp.js -->
+    <script src="~/contents/js/jquery.scrollUp.js"></script>
+    <!-- jquery.waypoints.min.js -->
+    <script src="~/contents/js/jquery.waypoints.min.js"></script>
+    <!-- jquery.meanmenu.js -->
+    <script src="~/contents/js/jquery.meanmenu.js"></script>
+    <!-- jquery.sticky.js -->
+    <script src="~/contents/js/jquery.sticky.js"></script>
+    <!-- plugins.js -->
+    <script src="~/contents/js/plugins.js"></script>
+    <!-- main.js -->
+    <script src="~/contents/js/main.js"></script>
+    <script src="~/contents/js/main.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>﻿
+    <script src="~/Scripts/custom.js"></script>
+</body>
+</html>
+

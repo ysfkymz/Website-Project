@@ -1,0 +1,82 @@
+﻿
+
+@model stajprojesi.Models.EntitiyFramework.staj
+
+@{
+
+    ViewBag.Title = "yeniogr";
+    Layout = "~/Views/Shared/_Layout7.cshtml";
+}
+@Html.Raw(TempData["msg"])
+
+@using (Html.BeginForm("Yeni", "Ogrenci", FormMethod.Post))
+{
+
+    <div class="container">
+        <p>Yeni öğrenci için gerekli kısımları doldurunuz.</p>
+        <table class="table table-bordered" id="asdf">
+            <tbody>
+                <tr>
+                    <th>Öğrenci Numarası</th>
+                    <th>Öğretim</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+
+                    <th>Kurum Adı</th>
+                    <th>Şehir</th>
+
+
+
+                </tr>
+
+
+                <tr>
+                    <td>
+
+                        @Html.TextBoxFor(m => m.ogr_no, new { @clas = "form-control" })
+                    </td>
+                    <td> @Html.TextBoxFor(m => m.ogretim, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.ad, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.soyad, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.kurum_adi, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.sehir, new { @clas = "form-control" })</td>
+
+
+
+
+
+
+                </tr>
+
+                <tr>
+                    <th>Staj Konusu</th>
+                    <th>Sınıfı</th>
+                    <th>Başlangıç Tarihi</th>
+                    <th>Bitiş Tarihi</th>
+                    <th>Gün</th>
+                    <th>Ekle</th>
+                </tr>
+
+
+                <tr>
+                    <td> @Html.TextBoxFor(m => m.staj_konu, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.ogr_sinif, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.bas_tarihi, new { @clas = "form-control" })</td>
+
+                    <td> @Html.TextBoxFor(m => m.bit_tarihi, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.gun, new { @clas = "form-control" })</td>
+                    <td align="center"> <button type="submit" class="btn btn-info">Yeni Öğrenciyi Ekle</button>  </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div style="width:10px; height:120px"></div>
+
+
+
+
+    </div>
+
+
+}
+

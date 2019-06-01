@@ -1,0 +1,416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="stajProjesiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="komisyon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="unvan" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="soyad" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="komo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="komad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="kom" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="konular">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="konuad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="mulakat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ogr_no" Type="int" Nullable="false" />
+          <Property Name="bas_tarihi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tarih" Type="varchar" MaxLength="50" />
+          <Property Name="saat" Type="varchar" MaxLength="50" />
+          <Property Name="komisyon1" Type="int" />
+          <Property Name="komisyon2" Type="int" />
+          <Property Name="devam" Type="int" />
+          <Property Name="caba" Type="int" />
+          <Property Name="is_vaktinde_yapma" Type="int" />
+          <Property Name="amire_davranis" Type="int" />
+          <Property Name="ekibe_davranis" Type="int" />
+          <Property Name="proje" Type="int" />
+          <Property Name="duzen" Type="int" />
+          <Property Name="sunum" Type="int" />
+          <Property Name="icerik" Type="int" />
+          <Property Name="mulakat" Type="int" />
+        </EntityType>
+        <EntityType Name="ogrenci">
+          <Key>
+            <PropertyRef Name="ogr_no" />
+          </Key>
+          <Property Name="ogr_no" Type="int" Nullable="false" />
+          <Property Name="ad" Type="varchar" MaxLength="50" />
+          <Property Name="soyad" Type="varchar" MaxLength="50" />
+          <Property Name="ogretim" Type="bit" />
+          <Property Name="durum" Type="bit" />
+          <Property Name="gun" Type="int" />
+        </EntityType>
+        <EntityType Name="staj">
+          <Key>
+            <PropertyRef Name="bas_tarihi" />
+            <PropertyRef Name="ogr_no" />
+          </Key>
+          <Property Name="ad" Type="varchar" MaxLength="100" />
+          <Property Name="soyad" Type="varchar" MaxLength="100" />
+          <Property Name="gun" Type="int" />
+          <Property Name="ogretim" Type="int" />
+          <Property Name="kurum_adi" Type="varchar" MaxLength="100" />
+          <Property Name="sehir" Type="varchar" MaxLength="50" />
+          <Property Name="bas_tarihi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bit_tarihi" Type="varchar" MaxLength="50" />
+          <Property Name="toplam_gun" Type="int" />
+          <Property Name="staj_konu" Type="varchar" MaxLength="100" />
+          <Property Name="ogr_sinif" Type="int" />
+          <Property Name="kabul_gun" Type="int" />
+          <Property Name="durum" Type="bit" />
+          <Property Name="ogr_no" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stajBilgisi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="kurum_adi" Type="varchar" MaxLength="100" />
+          <Property Name="sehir" Type="varchar" MaxLength="50" />
+          <Property Name="toplam_gun" Type="int" />
+          <Property Name="staj_konu" Type="varchar" MaxLength="100" />
+          <Property Name="ogr_sinif" Type="int" />
+          <Property Name="kabul_gun" Type="int" />
+          <Property Name="durum" Type="bit" />
+          <Property Name="ogr_no" Type="int" Nullable="false" />
+          <Property Name="bas_tarihi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bit_tarihi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__stajBilgi__ogr_n__3D5E1FD2">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="stajBilgisi" Type="Self.stajBilgisi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="ogr_no" />
+            </Principal>
+            <Dependent Role="stajBilgisi">
+              <PropertyRef Name="ogr_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="stajProjesiModelStoreContainer">
+          <EntitySet Name="komisyon" EntityType="Self.komisyon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="komo" EntityType="Self.komo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="konular" EntityType="Self.konular" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mulakat" EntityType="Self.mulakat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ogrenci" EntityType="Self.ogrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="staj" EntityType="Self.staj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stajBilgisi" EntityType="Self.stajBilgisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__stajBilgi__ogr_n__3D5E1FD2" Association="Self.FK__stajBilgi__ogr_n__3D5E1FD2">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="stajBilgisi" EntitySet="stajBilgisi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="stajProjesiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="komisyon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soyad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="komo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="komad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="konular">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="konuad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="mulakat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ogr_no" Type="Int32" Nullable="false" />
+          <Property Name="bas_tarihi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tarih" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="saat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="komisyon1" Type="Int32" />
+          <Property Name="komisyon2" Type="Int32" />
+          <Property Name="devam" Type="Int32" />
+          <Property Name="caba" Type="Int32" />
+          <Property Name="is_vaktinde_yapma" Type="Int32" />
+          <Property Name="amire_davranis" Type="Int32" />
+          <Property Name="ekibe_davranis" Type="Int32" />
+          <Property Name="proje" Type="Int32" />
+          <Property Name="duzen" Type="Int32" />
+          <Property Name="sunum" Type="Int32" />
+          <Property Name="icerik" Type="Int32" />
+          <Property Name="mulakat1" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ogrenci">
+          <Key>
+            <PropertyRef Name="ogr_no" />
+          </Key>
+          <Property Name="ogr_no" Type="Int32" Nullable="false" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ogretim" Type="Boolean" />
+          <Property Name="durum" Type="Boolean" />
+          <Property Name="gun" Type="Int32" />
+          <NavigationProperty Name="stajBilgisi" Relationship="Self.FK__stajBilgi__ogr_n__3D5E1FD2" FromRole="ogrenci" ToRole="stajBilgisi" />
+        </EntityType>
+        <EntityType Name="staj">
+          <Key>
+            <PropertyRef Name="bas_tarihi" />
+            <PropertyRef Name="ogr_no" />
+          </Key>
+          <Property Name="ad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="soyad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="gun" Type="Int32" />
+          <Property Name="ogretim" Type="Int32" />
+          <Property Name="kurum_adi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="sehir" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bas_tarihi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bit_tarihi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="toplam_gun" Type="Int32" />
+          <Property Name="staj_konu" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ogr_sinif" Type="Int32" />
+          <Property Name="kabul_gun" Type="Int32" />
+          <Property Name="durum" Type="Boolean" />
+          <Property Name="ogr_no" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stajBilgisi">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="kurum_adi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="sehir" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="toplam_gun" Type="Int32" />
+          <Property Name="staj_konu" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ogr_sinif" Type="Int32" />
+          <Property Name="kabul_gun" Type="Int32" />
+          <Property Name="durum" Type="Boolean" />
+          <Property Name="ogr_no" Type="Int32" Nullable="false" />
+          <Property Name="bas_tarihi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bit_tarihi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ogrenci" Relationship="Self.FK__stajBilgi__ogr_n__3D5E1FD2" FromRole="stajBilgisi" ToRole="ogrenci" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__stajBilgi__ogr_n__3D5E1FD2">
+          <End Role="ogrenci" Type="Self.ogrenci" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="stajBilgisi" Type="Self.stajBilgisi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ogrenci">
+              <PropertyRef Name="ogr_no" />
+            </Principal>
+            <Dependent Role="stajBilgisi">
+              <PropertyRef Name="ogr_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="stajProjesiEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="komisyon" EntityType="Self.komisyon" />
+          <EntitySet Name="komo" EntityType="Self.komo" />
+          <EntitySet Name="konular" EntityType="Self.konular" />
+          <EntitySet Name="mulakat" EntityType="Self.mulakat" />
+          <EntitySet Name="ogrenci" EntityType="Self.ogrenci" />
+          <EntitySet Name="staj" EntityType="Self.staj" />
+          <EntitySet Name="stajBilgisi" EntityType="Self.stajBilgisi" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK__stajBilgi__ogr_n__3D5E1FD2" Association="Self.FK__stajBilgi__ogr_n__3D5E1FD2">
+            <End Role="ogrenci" EntitySet="ogrenci" />
+            <End Role="stajBilgisi" EntitySet="stajBilgisi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="stajProjesiModelStoreContainer" CdmEntityContainer="stajProjesiEntities2">
+          <EntitySetMapping Name="komisyon">
+            <EntityTypeMapping TypeName="stajProjesiModel.komisyon">
+              <MappingFragment StoreEntitySet="komisyon">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="unvan" ColumnName="unvan" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="komo">
+            <EntityTypeMapping TypeName="stajProjesiModel.komo">
+              <MappingFragment StoreEntitySet="komo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="komad" ColumnName="komad" />
+                <ScalarProperty Name="kom" ColumnName="kom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="konular">
+            <EntityTypeMapping TypeName="stajProjesiModel.konular">
+              <MappingFragment StoreEntitySet="konular">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="konuad" ColumnName="konuad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mulakat">
+            <EntityTypeMapping TypeName="stajProjesiModel.mulakat">
+              <MappingFragment StoreEntitySet="mulakat">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ogr_no" ColumnName="ogr_no" />
+                <ScalarProperty Name="bas_tarihi" ColumnName="bas_tarihi" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="saat" ColumnName="saat" />
+                <ScalarProperty Name="komisyon1" ColumnName="komisyon1" />
+                <ScalarProperty Name="komisyon2" ColumnName="komisyon2" />
+                <ScalarProperty Name="devam" ColumnName="devam" />
+                <ScalarProperty Name="caba" ColumnName="caba" />
+                <ScalarProperty Name="is_vaktinde_yapma" ColumnName="is_vaktinde_yapma" />
+                <ScalarProperty Name="amire_davranis" ColumnName="amire_davranis" />
+                <ScalarProperty Name="ekibe_davranis" ColumnName="ekibe_davranis" />
+                <ScalarProperty Name="proje" ColumnName="proje" />
+                <ScalarProperty Name="duzen" ColumnName="duzen" />
+                <ScalarProperty Name="sunum" ColumnName="sunum" />
+                <ScalarProperty Name="icerik" ColumnName="icerik" />
+                <ScalarProperty Name="mulakat1" ColumnName="mulakat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ogrenci">
+            <EntityTypeMapping TypeName="stajProjesiModel.ogrenci">
+              <MappingFragment StoreEntitySet="ogrenci">
+                <ScalarProperty Name="ogr_no" ColumnName="ogr_no" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="ogretim" ColumnName="ogretim" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="gun" ColumnName="gun" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staj">
+            <EntityTypeMapping TypeName="stajProjesiModel.staj">
+              <MappingFragment StoreEntitySet="staj">
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="gun" ColumnName="gun" />
+                <ScalarProperty Name="ogretim" ColumnName="ogretim" />
+                <ScalarProperty Name="kurum_adi" ColumnName="kurum_adi" />
+                <ScalarProperty Name="sehir" ColumnName="sehir" />
+                <ScalarProperty Name="bas_tarihi" ColumnName="bas_tarihi" />
+                <ScalarProperty Name="bit_tarihi" ColumnName="bit_tarihi" />
+                <ScalarProperty Name="toplam_gun" ColumnName="toplam_gun" />
+                <ScalarProperty Name="staj_konu" ColumnName="staj_konu" />
+                <ScalarProperty Name="ogr_sinif" ColumnName="ogr_sinif" />
+                <ScalarProperty Name="kabul_gun" ColumnName="kabul_gun" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="ogr_no" ColumnName="ogr_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stajBilgisi">
+            <EntityTypeMapping TypeName="stajProjesiModel.stajBilgisi">
+              <MappingFragment StoreEntitySet="stajBilgisi">
+                <ScalarProperty Name="kurum_adi" ColumnName="kurum_adi" />
+                <ScalarProperty Name="sehir" ColumnName="sehir" />
+                <ScalarProperty Name="toplam_gun" ColumnName="toplam_gun" />
+                <ScalarProperty Name="staj_konu" ColumnName="staj_konu" />
+                <ScalarProperty Name="ogr_sinif" ColumnName="ogr_sinif" />
+                <ScalarProperty Name="kabul_gun" ColumnName="kabul_gun" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="ogr_no" ColumnName="ogr_no" />
+                <ScalarProperty Name="bas_tarihi" ColumnName="bas_tarihi" />
+                <ScalarProperty Name="bit_tarihi" ColumnName="bit_tarihi" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="stajProjesiModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

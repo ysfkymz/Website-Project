@@ -1,0 +1,37 @@
+﻿@using stajprojesi.Models.EntitiyFramework
+@model List<konular>
+@{
+
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}
+<div class="container">
+    <a class="btn btn-success" href="/Konu/Ekle">Yeni Konu Eklemek için Tıklayınız</a>
+    <div style=" width:700px; height:20px;"> </div>
+    <table class="table table-bordered" id="asd">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Konu</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var konular in Model)
+            {
+            <tr>
+                <td>@konular.id</td>
+                <td>@konular.konuad</td>
+                <td><a class="btn btn-primary" href="/Konu/Guncelle/@konular.id">Güncelle</a></td>
+                <td><a class="btn btn-warning" href="/Konu/Sil/@konular.id">Sil</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div style="width:10px; height:120px"></div>
+
+   
+
+</div>
+
+    

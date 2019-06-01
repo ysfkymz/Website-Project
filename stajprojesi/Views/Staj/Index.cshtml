@@ -1,0 +1,52 @@
+﻿@using stajprojesi.Models.EntitiyFramework
+@model List<staj>
+@{
+
+    Layout = "~/Views/Shared/_Layout6.cshtml";
+}
+
+<div class="container">
+    
+    <div style=" width:700px; height:20px;"> </div>
+    <table class="table table-bordered" id="asdf">
+        <thead>
+            <tr>
+                <th>Öğrenci No</th>
+                <th>Kurum Adı</th>
+                <th>Şehir</th>
+                <th>Başlama Tarihi</th>
+                <th>Bitiş Tarihi</th>
+                <th>Staj Gün Sayısı</th>
+                <th>Staj Konusu</th>
+                <th>Sınıf</th>
+                <th>Kabul</th>
+                <th>Durum</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var staj in Model)
+            {
+                <tr>
+                    <td>@staj.ogr_no</td>
+                    <td>@staj.kurum_adi</td>
+                    <td>@staj.sehir</td>
+                    <td>@staj.bas_tarihi</td>
+                    <td>
+                        @staj.bit_tarihi
+                    </td>
+                    <td>@staj.gun</td>
+                    <td>@staj.staj_konu</td>
+                    <td>@staj.ogr_sinif</td>
+                    <td>@staj.kabul_gun</td>
+                    <td>@staj.durum</td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+</div>
+

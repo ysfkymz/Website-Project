@@ -1,0 +1,82 @@
+﻿
+@model stajprojesi.Models.EntitiyFramework.mulakat
+
+
+
+@{
+
+    Layout = "~/Views/Shared/_Layout5.cshtml";
+
+
+}
+
+
+
+@using (Html.BeginForm("Kaydet", "Mulakat", FormMethod.Post))
+{
+    <div class="container">
+        <p>Öğrencinin notlarını giriniz.</p>
+        <table class="table table-bordered" id="asdf">
+            <tbody>
+                <tr>
+                    
+                    <th>Devam</th>
+                    <th>Çaba</th>
+                    <th>İşi Vaktinde Yapma</th>
+
+                    <th>Amire Davranış</th>
+                    <th>İş arkadaşlarına Davranış</th>
+                    <th>Proje</th>
+
+
+                </tr>
+
+
+                <tr>
+                    
+                   
+                    <td> @Html.TextBoxFor(m => m.devam, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.caba, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.is_vaktinde_yapma, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.amire_davranis, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.ekibe_davranis, new { @clas = "form-control" })</td>
+
+
+                    <td> @Html.TextBoxFor(m => m.proje, new { @clas = "form-control" })</td>
+
+
+
+                </tr>
+
+                <tr>
+                    
+                    <th>Düzen</th>
+                    <th>Sunum</th>
+                    <th>İçerik</th>
+                    <th>Mülakat</th>
+                    <th>Kaydet</th>
+                </tr>
+
+
+                <tr>
+                   
+                    <td> @Html.TextBoxFor(m => m.duzen, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.sunum, new { @clas = "form-control" })</td>
+                    <td> @Html.TextBoxFor(m => m.icerik, new { @clas = "form-control" })</td>
+
+                    <td> @Html.TextBoxFor(m => m.mulakat1, new { @clas = "form-control" })</td>
+
+                    <td align="center"> <button type="submit" class="btn btn-info">Kaydet</button>  </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div style="width:10px; height:120px"></div>
+
+
+
+
+    </div>
+
+
+}
